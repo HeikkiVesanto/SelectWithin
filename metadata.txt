@@ -8,29 +8,30 @@
 # Mandatory items:
 
 [general]
-name=Multi Ring Buffer
+name=Select Within
 qgisMinimumVersion=2.0
-description=Create multiple fixed distance buffer rings around a feature/set of features. Works on selected layer. Select layer and click on the Multi Ring Buffer icon. Creates "doughnut" ring buffers, not including the buffered feature.
-about=Create multiple buffer rings around a features/set of features. Works on selected layer. Select layer and click on the Multi Ring Buffer icon. Creates "doughnut" ring buffers, not including the buffered feature. Works in a sequential manner by buffering the resulting buffer and differencing the previous buffer. Also by default the buffer dissolves the features before buffering. Dissolving makes adjacent features behave in a better manner without overlapping buffers. The QGIS buffer feature has the logic behind this. Thanks to Neil Benny and Matt Walsh. Help: https://rawgit.com/HeikkiVesanto/QGIS_Multi_Ring_Buffer/master/help/index.html
-version=0.2
+description=Centroid within and point of surface within selection. Useful for pseudo mainly within selections between polygons. Should work with points, lines, and polygons.
+version=0.1
 author=Heikki Vesanto
-email=heikki.vesanto@thinkwhere.com
+email=heikki.vesanto@gmail.com
 
+about=Centroid within and point of surface within selector.
+
+tracker=tracker url
+repository=repo url
 # End of mandatory metadata
 
-# Optional items:
+# Recommended items:
 
 # Uncomment the following line and add your changelog:
-changelog=Added advanced options. Max segments increased to 300.
+# changelog=
 
 # Tags are comma separated with spaces allowed
-tags=buffer,vector,ring,distance,multi,ring
-category=Vector
+tags=vector, select, selection, polygon, analysis
 
-homepage=https://rawgit.com/HeikkiVesanto/QGIS_Multi_Ring_Buffer/master/help/index.html
-tracker=https://github.com/HeikkiVesanto/QGIS_Multi_Ring_Buffer/issues
-repository=https://github.com/HeikkiVesanto/QGIS_Multi_Ring_Buffer
-icon=icon.svg
+homepage=homepage url
+category=Vector
+icon=icon.png
 # experimental flag
 experimental=False
 
