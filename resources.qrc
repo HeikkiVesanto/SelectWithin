@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/Multi_Ring_Buffer" >
+        <file>icon.svg</file>
+    </qresource>
+</RCC>
