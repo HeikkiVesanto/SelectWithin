@@ -24,7 +24,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="selectFromCombo"/>
+      <widget class="QgsMapLayerComboBox" name="selectFromCombo"/>
      </item>
      <item>
       <widget class="QLabel" name="label_2">
@@ -68,7 +68,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="selectWithCombo"/>
+      <widget class="QgsMapLayerComboBox" name="selectWithCombo"/>
      </item>
      <item>
       <widget class="QCheckBox" name="selectedFeaturesCheckbox">
@@ -134,6 +134,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsMapLayerComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgis.gui</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -170,7 +177,7 @@
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

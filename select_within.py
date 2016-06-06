@@ -29,7 +29,7 @@ import resource_rc
 from select_within_dialog import SelectWithinDialog
 import os.path
 from PyQt4.QtCore import *
-
+import operator
 
 class SelectWithin:
     """QGIS Plugin Implementation."""
@@ -185,17 +185,12 @@ class SelectWithin:
         """Run method that performs all the real work"""
         # Get list of vector layers
         layers = QgsMapLayerRegistry.instance().mapLayers().values()
-        # Populate the UI with the list
-        self.dlg.selectWithCombo.clear()
-        self.dlg.selectFromCombo.clear()
+
         #Check there is at least one vector layer. Selecting within the same layer is fine.
         vlayer_count = 0
         for layer in layers:
             if layer.type() == QgsMapLayer.VectorLayer:
                 vlayer_count = vlayer_count + 1
-                self.dlg.selectWithCombo.addItem( layer.name(), layer )
-                self.dlg.selectFromCombo.addItem( layer.name(), layer )
-
         # Run the dialog event loop
         if vlayer_count > 0:
             # show the dialog
@@ -209,10 +204,8 @@ class SelectWithin:
 
         if result:
             # Get the two selected layers.
-            index1 = self.dlg.selectWithCombo.currentIndex()
-            selecting_layer = self.dlg.selectWithCombo.itemData(index1)
-            index2 = self.dlg.selectFromCombo.currentIndex()
-            select_from_layer = self.dlg.selectFromCombo.itemData(index2)
+            selecting_layer = self.dlg.selectWithCombo.currentLayer()
+            select_from_layer = self.dlg.selectFromCombo.currentLayer()
 
             # Either select with all features or just selected ones
             selected_test = self.dlg.selectedFeaturesCheckbox.isChecked()

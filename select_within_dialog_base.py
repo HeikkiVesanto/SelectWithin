@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'select_within_dialog_base.ui'
 #
-# Created: Sun Aug 23 11:12:47 2015
+# Created: Mon Jun 06 21:48:05 2016
 #      by: PyQt4 UI code generator 4.10.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -34,7 +34,7 @@ class Ui_SelectWithinDialogBase(object):
         self.label = QtGui.QLabel(SelectWithinDialogBase)
         self.label.setObjectName(_fromUtf8("label"))
         self.verticalLayout.addWidget(self.label)
-        self.selectFromCombo = QtGui.QComboBox(SelectWithinDialogBase)
+        self.selectFromCombo = QgsMapLayerComboBox(SelectWithinDialogBase)
         self.selectFromCombo.setObjectName(_fromUtf8("selectFromCombo"))
         self.verticalLayout.addWidget(self.selectFromCombo)
         self.label_2 = QtGui.QLabel(SelectWithinDialogBase)
@@ -57,7 +57,7 @@ class Ui_SelectWithinDialogBase(object):
         self.label_3 = QtGui.QLabel(SelectWithinDialogBase)
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.verticalLayout.addWidget(self.label_3)
-        self.selectWithCombo = QtGui.QComboBox(SelectWithinDialogBase)
+        self.selectWithCombo = QgsMapLayerComboBox(SelectWithinDialogBase)
         self.selectWithCombo.setObjectName(_fromUtf8("selectWithCombo"))
         self.verticalLayout.addWidget(self.selectWithCombo)
         self.selectedFeaturesCheckbox = QtGui.QCheckBox(SelectWithinDialogBase)
@@ -103,3 +103,4 @@ class Ui_SelectWithinDialogBase(object):
         self.newSelectionRadioButton.setText(_translate("SelectWithinDialogBase", "Creating new selection", None))
         self.currentSelectionRadioButton.setText(_translate("SelectWithinDialogBase", "Adding to current selection", None))
 
+from qgsmaplayercombobox import QgsMapLayerComboBox
