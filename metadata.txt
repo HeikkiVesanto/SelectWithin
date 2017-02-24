@@ -9,7 +9,7 @@
 
 [general]
 name=Select Within
-qgisMinimumVersion=2.0
+qgisMinimumVersion=2.4
 description=Centroid within and point of surface within selection. Useful for pseudo mainly within selections between polygons. Should work with points, lines, and polygons.
 version=0.1
 author=Heikki Vesanto
