@@ -23,13 +23,14 @@
 
 import os
 
-from PyQt4 import QtGui, uic
+from qgis.PyQt import QtGui, uic
+from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'select_within_dialog_base.ui'))
 
 
-class SelectWithinDialog(QtGui.QDialog, FORM_CLASS):
+class SelectWithinDialog(QDialog, FORM_CLASS):
     def __init__(self, parent=None):
         """Constructor."""
         super(SelectWithinDialog, self).__init__(parent)

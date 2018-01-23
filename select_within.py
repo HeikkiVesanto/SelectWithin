@@ -20,18 +20,20 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QAction, QIcon, QMessageBox, QProgressBar
+from __future__ import absolute_import
+from builtins import object
+from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QVariant, Qt
+from qgis.PyQt.QtWidgets import QAction, QMessageBox, QProgressBar
+from qgis.PyQt.QtGui import QIcon
 from qgis.core import *
 # Initialize Qt resources from file resources.py
-import resource_rc
+from . import resource_rc
 # Import the code for the dialog
-from select_within_dialog import SelectWithinDialog
+from .select_within_dialog import SelectWithinDialog
 import os.path
-from PyQt4.QtCore import *
 import operator
 
-class SelectWithin:
+class SelectWithin(object):
     """QGIS Plugin Implementation."""
 
     def __init__(self, iface):
@@ -184,7 +186,7 @@ class SelectWithin:
     def run(self):
         """Run method that performs all the real work"""
         # Get list of vector layers
-        layers = QgsMapLayerRegistry.instance().mapLayers().values()
+        layers = list(QgsProject.instance().mapLayers().values())
 
         #Check there is at least one vector layer. Selecting within the same layer is fine.
         vlayer_count = 0
