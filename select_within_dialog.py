@@ -9,6 +9,7 @@
         git sha              : $Format:%H$
         copyright            : (C) 2015 by Heikki Vesanto
         email                : heikki.vesanto@gmail.com
+
  ***************************************************************************/
 
 /***************************************************************************
@@ -23,8 +24,10 @@
 
 import os
 
-from qgis.PyQt import QtGui, uic
-from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox
+from qgis.PyQt import uic
+from qgis.PyQt.QtWidgets import QDialog
+
+from qgis.core import QgsMapLayerProxyModel
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'select_within_dialog_base.ui'))
@@ -40,3 +43,49 @@ class SelectWithinDialog(QDialog, FORM_CLASS):
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
+        self.selectFromCombo.setFilters(QgsMapLayerProxyModel.HasGeometry)
+        self.selectWithCombo.setFilters(QgsMapLayerProxyModel.HasGeometry)
+
+        self.mostlyWithinRadioButton.toggled.connect(self.where_mostly)
+        self.centroidRadioButton.toggled.connect(self.where_centroid)
+        self.pointonsurfaceRadioButton.toggled.connect(self.where_surface)
+        self.poleOfInaccessibilityRadioButton.toggled.connect(self.where_point_of_inaccessability)
+
+        self.selectWithCombo.layerChanged.connect(self.is_something_selected)
+
+    def where_mostly(self):
+        self.poiTolSpin.setEnabled(0)
+        self.mostlySpin.setEnabled(1)
+        self.noDissolveSelectWith.setEnabled(1)
+
+    def where_centroid(self):
+        self.poiTolSpin.setEnabled(0)
+        self.mostlySpin.setEnabled(0)
+        self.noDissolveSelectWith.setEnabled(0)
+        self.noDissolveSelectWith.setChecked(0)
+
+    def where_surface(self):
+        self.poiTolSpin.setEnabled(0)
+        self.mostlySpin.setEnabled(0)
+        self.noDissolveSelectWith.setEnabled(0)
+        self.noDissolveSelectWith.setChecked(0)
+
+    def where_point_of_inaccessability(self):
+        self.poiTolSpin.setEnabled(1)
+        self.mostlySpin.setEnabled(0)
+        self.noDissolveSelectWith.setEnabled(0)
+        self.noDissolveSelectWith.setChecked(0)
+
+    def is_something_selected(self):
+        vlayer = self.selectWithCombo.currentLayer()
+        if vlayer is not None:
+            if not vlayer.selectedFeatures():
+                self.selectedFeaturesCheckbox.setChecked(0)
+                self.selectedFeaturesCheckbox.setEnabled(0)
+                self.selectedFeaturesCheckbox.setToolTip("No features selected in layer")
+            else:
+                self.selectedFeaturesCheckbox.setEnabled(1)
+                self.selectedFeaturesCheckbox.setToolTip("Use only selected features")
+                # self.selectedfeats.setChecked(1)
+        else:
+            pass

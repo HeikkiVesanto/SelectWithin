@@ -14,6 +14,10 @@ path %OSGEO4W_ROOT%\apps\qgis-dev\bin;%OSGEO4W_ROOT%\apps\grass\grass-7.2.2\lib;
 
 cd /d %~dp0
 
+set direc=%~dp0
+
+fnr.exe --cl --find "qgsmaplayercombobox.h" --replace "qgis.gui" --dir %direc% --fileMask "select_within_dialog_base.ui"
+
 @ECHO ON
 ::Ui Compilation
 call pyuic5 select_within_dialog_base.ui -o select_within_dialog_base.py          

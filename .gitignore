@@ -5,12 +5,14 @@ __pycache__/
 
 # Notepad++ backup files
 *.bak
+*.zip
 
 # C extensions
 *.so
 
 # Distribution / packaging
 .Python
+SelectWithin/
 build/
 develop-eggs/
 dist/

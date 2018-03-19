@@ -10,26 +10,26 @@
 [general]
 name=Select Within
 qgisMinimumVersion=3.0
-description=Centroid within and point of surface within selection. Useful for pseudo mainly within selections between polygons. Should work with points, lines, and polygons.
-version=0.3
+description=Centroid within, point of surface within, pole of inaccessibility within, percentage within, and mostly within selection. Works best with lines and polygons, but should work with other geometries as well.
+version=0.4
 author=Heikki Vesanto
 email=heikki.vesanto@gmail.com
 
-about=Centroid within and point of surface within selector.
+about=Centroid within point of surface within, pole of inaccessibility within, and mostly within selection. Centroid not guaranteed to be within the original geometry, while the other two centroid selection types are. Pole of inaccessibility is done using the polylabel algorithm: https://github.com/mapbox/polylabel as implemented in the QGIS core code. Works best with lines and polygons, but should work with other geometries as well.
 
-tracker=tracker url
-repository=repo url
+tracker=https://github.com/HeikkiVesanto/SelectWithin/issues
+repository=https://github.com/HeikkiVesanto/QGIS_Centroid_Within/
 # End of mandatory metadata
 
 # Recommended items:
 
 # Uncomment the following line and add your changelog:
-# changelog=
+changelog=Bugfixes from api breaks. Added mostly within selection, and pole of inaccessibility selector.
 
 # Tags are comma separated with spaces allowed
-tags=vector, select, selection, polygon, analysis
+tags=vector, select, selection, polygon, analysis, within, intersection
 
-homepage=homepage url
+homepage=https://gisforthought.com/qgis-select-within-plugin/
 category=Vector
 icon=icon.png
 # experimental flag
